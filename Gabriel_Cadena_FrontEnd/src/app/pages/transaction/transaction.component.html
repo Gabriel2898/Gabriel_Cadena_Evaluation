@@ -1,0 +1,52 @@
+<div class="start-container">
+  <h1>Lista de Transacciones</h1>
+
+
+ <button mat-raised-button color="primary"(click)="openDialogBuy()">Comprar</button>
+ <button mat-raised-button color="primary"(click)="openDialogSell()">Venta</button>
+  <mat-form-field  style="width: 100%;">
+    <mat-label>Filtrar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Buscar transaccion">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="transactionType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo </th>
+      <td mat-cell *matCellDef="let product"> {{product.transactionType}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="productId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Producto Id </th>
+      <td mat-cell *matCellDef="let product"> {{product.productId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad </th>
+      <td mat-cell *matCellDef="let product"> {{product.quantity}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="unitPrice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> PrecioUnitario </th>
+      <td mat-cell *matCellDef="let product"> ${{product.unitPrice}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalPrice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio Total </th>
+      <td mat-cell *matCellDef="let product"> {{product.totalPrice}} </td>
+    </ng-container>
+    <ng-container matColumnDef="details">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Detalle </th>
+      <td mat-cell *matCellDef="let product"> {{product.details}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+

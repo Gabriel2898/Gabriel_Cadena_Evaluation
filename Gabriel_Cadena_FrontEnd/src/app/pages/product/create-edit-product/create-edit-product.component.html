@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>{{ action }}</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="formProduct">
+    <mat-grid-list cols="1" rowHeight="2:1">
+      <mat-grid-tile>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="name" required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Descripcion</mat-label>
+          <input matInput formControlName="description" required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Categoria</mat-label>
+          <input matInput formControlName="category" required>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Precio</mat-label>
+          <input matInput formControlName="price" required  type="decimal">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Stock</mat-label>
+          <input matInput formControlName="stock" required type="number">
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>Volver</button>
+
+  <button mat-raised-button (click)="addProduct()" [disabled]="formProduct.invalid">{{botonAction}}</button>
+</div>
+

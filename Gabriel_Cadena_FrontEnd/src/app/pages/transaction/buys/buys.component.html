@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>Compra</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="formBuy">
+    <mat-grid-list cols="1" rowHeight="2:1">
+      <mat-grid-tile>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Producto</mat-label>
+        <mat-select formControlName="productId" required="">
+          <mat-option *ngFor="let product of product" [value]="product.id">
+            {{ product.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Cantidad</mat-label>
+          <input matInput formControlName="quantity" required type="number">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Precio Unitario</mat-label>
+          <input matInput formControlName="unitPrice" required type="decimal">
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Detalle</mat-label>
+          <input matInput formControlName="detail" required>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close>Volver</button>
+
+  <button mat-raised-button (click)="addProduct()" [disabled]="formBuy.invalid">{{botonAction}}</button>
+</div>
+
